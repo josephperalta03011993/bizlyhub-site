@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Basics for Small Businesses</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.7;
+        }
+        header {
+            background: linear-gradient(135deg, #6b48ff, #00ddeb);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .strategy {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .strategy.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        h2 {
+            color: #6b48ff;
+            font-size: 1.6rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: white;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SEO Basics for Small Businesses</h1>
+        <p>Get found online with simple strategies.</p>
+    </header>
+
+    <div class="container">
+        <div class="strategy">
+            <h2>1. Target the Right Keywords</h2>
+            <p>Research keywords your customers use to find businesses like yours. Use tools like Google Keyword Planner to keep it simple and effective.</p>
+        </div>
+        <div class="strategy">
+            <h2>2. Optimize Your Website Content</h2>
+            <p>Include keywords naturally in titles, headings, and text. Make sure your content is clear, helpful, and answers customer questions.</p>
+        </div>
+        <div class="strategy">
+            <h2>3. Claim Your Google Business Profile</h2>
+            <p>Set up and verify your Google Business Profile to appear in local searches and on Google Maps—perfect for small businesses.</p>
+        </div>
+        <div class="strategy">
+            <h2>4. Build Quality Backlinks</h2>
+            <p>Get reputable sites to link to yours through partnerships, guest posts, or local directories. It boosts your credibility with search engines.</p>
+        </div>
+        <div class="strategy">
+            <h2>5. Focus on Mobile Optimization</h2>
+            <p>Ensure your site loads fast and looks great on phones—Google prioritizes mobile-friendly sites in its rankings.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 BizlyHub | Designed with the Future in Mind</p>
+    </footer>
+
+    <script>
+        // Slide-in animation on scroll
+        const strategies = document.querySelectorAll('.strategy');
+
+        function checkVisibility() {
+            const triggerBottom = window.innerHeight * 0.85; // Trigger when 85% in view
+            strategies.forEach(strategy => {
+                const strategyTop = strategy.getBoundingClientRect().top;
+                if (strategyTop < triggerBottom) {
+                    strategy.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkVisibility);
+        checkVisibility(); // Check on load
+    </script>
+</body>
+</html>
