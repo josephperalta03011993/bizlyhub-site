@@ -38,9 +38,11 @@
         <p>A <strong>fast-loading site</strong> is crucial for user interaction. In today's digital world, every second matters. Slow sites lose visitors, hurt search rankings, and limit growth.</p>
         <p>Users want instant results. Search engines like Google favor fast sites. This guide offers steps to make your site fast and effective.</p>
         <img class="blog-img" 
-             src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/49729b8b-ce2f-4c2a-a9fa-bb410427f067/91a3d8bb-21a3-49c5-b366-25dc00f156db.jpg" 
+             src="../images/loading.webp" 
              alt="SEO, website speed, website design and development" 
-             loading="lazy">
+             loading="lazy"
+             height="571"
+             width="1000">
         <h2>Key Takeaways</h2>
         <ul>
             <li>Fast-loading sites improve user satisfaction and reduce bounce rates.</li>
@@ -130,9 +132,11 @@
             </table>
         </div>
         <img class="blog-img" 
-             src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/49729b8b-ce2f-4c2a-a9fa-bb410427f067/b214066c-edf7-4ac4-8f2c-eee7e781b85e.jpg" 
-             alt="caching strategies" 
-             loading="lazy">
+             src="../images/caching.webp"
+             alt="caching strateg`ies" 
+             loading="lazy"
+             height="571"
+             width="1000">
         <h2>Leveraging Caching and CDN</h2>
         <h3>Cache Configuration</h3>
         <ul>
@@ -154,9 +158,11 @@
             <li>Lazy loading</li>
         </ul>
         <img class="blog-img" 
-             src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/49729b8b-ce2f-4c2a-a9fa-bb410427f067/fedc3b9e-8af8-4afd-a793-4daa2efd6715.jpg" 
+             src="../images/optimizing.webp"
              alt="image compression techniques" 
-             loading="lazy">
+             loading="lazy"
+             height="571"
+             width="1000">
         <h2>Monitoring and Measuring Performance</h2>
         <p>Track <em>performance metrics</em> for a fast site.</p>
         <h3>Tools and Metrics</h3>
