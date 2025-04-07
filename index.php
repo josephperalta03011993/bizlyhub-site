@@ -175,7 +175,7 @@
                 </a>
             </div>
             <div class="blog-card">
-                <a href="blogs/site-optimization.html" target="_blank" rel="noopener noreferrer">
+                <a href="blogs/how-to-optimize-your-site-for-speed.php" target="_blank" rel="noopener noreferrer">
                     <img src="images/site-optimization.webp" alt="Blog post about site optimization" loading="lazy" width="300" height="200">
                     <div>
                         <h4>How to Optimize Your Site for Speed</h4>
