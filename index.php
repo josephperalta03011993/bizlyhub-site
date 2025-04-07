@@ -70,7 +70,7 @@
         <div class="portfolio-grid">
                 <div class="portfolio-card">
                     <a href="#contact">
-                        <img src="images/custome-web-app.webp" alt="E-Commerce Store Project" Loading="lazy">
+                        <img src="images/custome-web-app.webp" alt="E-Commerce Store Project" Loading="lazy" width="400" height="200">
                         <div>
                             <h4>Custome Web Application</h4>
                             <p>Unlock the full potential of your business with a Custom Web Application tailored to your unique needs.</p>
@@ -79,7 +79,7 @@
                 </div>
             <div class="portfolio-card">
                 <a href="https://portfolio.bizlyhub.com/petshop/" target="_blank">
-                    <img src="images/pawsome-hero-banner.webp" alt="Portfolio Site Project Pawsome" loading="lazy">
+                    <img src="images/pawsome-hero-banner.webp" alt="Portfolio Site Project Pawsome" loading="lazy" width="400" height="200">
                     <div>
                         <h4>Pawsome</h4>
                         <p>Your trusted partner in pet care—quality products, expert advice, and compassionate services for your furry friends.</p>
@@ -88,7 +88,7 @@
             </div>
             <div class="portfolio-card">
                 <a href="https://portfolio.bizlyhub.com/va/" target="_blank">
-                    <img src="images/eliteva-hero-banner.webp" alt="Business Landing Page Project" loading="lazy">
+                    <img src="images/eliteva-hero-banner.webp" alt="Business Landing Page Project" loading="lazy" width="400" height="200">
                     <div>
                         <h4>Business Landing Page</h4>
                         <p>A high-converting page for lead generation.</p>
@@ -184,11 +184,11 @@
                 </a>
             </div>
             <div class="blog-card">
-                <a href="blogs/seo-basics.html" target="_blank" rel="noopener noreferrer">
+                <a href="blogs/how-a-well-designed-website-can-boost-your-sales-in-2025.php" target="_blank" rel="noopener noreferrer">
                     <img src="images/seo-basics.webp" alt="Blog post about SEO basics" loading="lazy">
                     <div>
-                        <h4>SEO Basics for Small Businesses</h4>
-                        <p>Get found online with simple strategies.</p>
+                        <h4>Boost Your Sales in 2025</h4>
+                        <p>How a Well-Designed Website Can Boost Your Sales in 2025.</p>
                     </div>
                 </a>
             </div>
