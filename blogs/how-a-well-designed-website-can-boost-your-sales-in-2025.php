@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How a Well-Designed Website Can Boost Your Sales in 2025 - BizlyHub</title>
     <meta name="description" content="Learn how a well-designed website can boost your sales in 2025 with modern e-commerce trends and UX optimization.">
-    <meta name="keywords" content="website design 2025, e-commerce design, sales boost, conversion optimization">
+    <meta name="keywords" content="website design 2025, e-commerce design, sales boost, conversion optimization, bizlyhub, joseph peralta">
     <meta property="og:title" content="Bizlyhub">
     <meta property="og:description" content="How a well designed website can boost your sales in 2025">
     <meta property="og:image" content="https://bizlyhub.com/images/boost-sale-2025-blog.webp">

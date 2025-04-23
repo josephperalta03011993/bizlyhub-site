@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Optimize Your Site for Speed - BizlyHub</title>
     <meta name="description" content="Learn how to optimize your website for speed in 2025 with practical tips and modern techniques.">
-    <meta name="keywords" content="website speed, optimization, SEO, performance, mobile design">
+    <meta name="keywords" content="website speed, optimization, SEO, performance, mobile design, bizlyhub, joseph peralta">
     <meta property="og:title" content="BizlyHub">
     <meta property="og:description" content="How to optimize your site for speed in 2025">
     <meta property="og:image" content="https://bizlyhub.com/images/speed-optimization-2025-blog.webp">
