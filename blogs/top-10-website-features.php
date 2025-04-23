@@ -36,12 +36,22 @@
         <br>
         <h1 class="animate-in">Top 10 Website Features That Keep Visitors Coming Back in 2025</h1>
         <p>In the ever-competitive digital landscape of <strong>2025</strong>, having a website that captivates and retains visitors is crucial. Certain <em><span>website features</span></em> play a significant role in enhancing <strong><span>visitor engagement</span></strong> and crafting a memorable <strong><span>digital experience</span></strong>.</p>
-        <img class="blog-img" 
+        <!-- <img class="blog-img" 
              src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/5a423cd0-6c7c-4162-a6c9-00757da5ba08.jpg" 
              alt="Top 10 Website Features That Keep Visitors Coming Back in 2025" 
              loading="lazy"
              height="571"
-             width="1000">
+             width="1000"> -->
+        <img class="blog-img"
+            srcset="../images/hero-small.jpg 600w,
+                    ../images/hero-medium.jpg 1200w,
+                    ../images/hero-large.jpg 1920w"
+            sizes="(max-width: 600px) 100vw,
+                (max-width: 1200px) 100vw,
+                1920px"
+            src="../images/hero-large.jpg"
+            alt="Top 10 Website Features That Keep Visitors Coming Back in 2025"
+            loading="lazy">
         <p>The quest for creating an engaging online presence involves incorporating innovative and interactive elements that encourage visitors to return. This involves understanding the intricacies of <em>digital experience</em> and leveraging <strong><span>website features</span></strong> that make a lasting impression.</p>
         <h2>Key Takeaways</h2>
         <ul>
