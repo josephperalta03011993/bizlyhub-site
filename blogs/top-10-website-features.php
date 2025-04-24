@@ -11,8 +11,9 @@
     <meta property="og:image" content="../images/hero-medium.webp">
     <meta property="og:url" content="https://bizlyhub.com/blogs/top-10-website-features.php">
     <meta property="og:type" content="website">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <link rel="stylesheet" href="../styles/main.css">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
     <!-- Navigation -->
@@ -34,9 +35,11 @@
     <!-- Blog Content -->
     <div class="blog-container">
         <br>
-        <h1 class="animate-in">Top 10 Website Features That Keep Visitors Coming Back in 2025</h1>
+        <h1>Top 10 Website Features That Keep Visitors Coming Back in 2025</h1>
         <p>In the ever-competitive digital landscape of <strong>2025</strong>, having a website that captivates and retains visitors is crucial. Certain <em><span>website features</span></em> play a significant role in enhancing <strong><span>visitor engagement</span></strong> and crafting a memorable <strong><span>digital experience</span></strong>.</p>
-        <img class="blog-img"
+        <img 
+            width="495" height="300"
+            class="blog-img"
             srcset="../images/hero-small.webp 600w,
                     ../images/hero-medium.webp 1200w,
                     ../images/hero-large.webp 1920w"
