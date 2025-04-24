@@ -8,8 +8,8 @@
     <meta name="keywords" content="website features, user engagement, digital experience, personalization, web design, BizlyHub, Joseph Peralta">
     <meta property="og:title" content="Top 10 Website Features That Keep Visitors Coming Back in 2025">
     <meta property="og:description" content="Explore the innovative website features shaping digital engagement in 2025.">
-    <meta property="og:image" content="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/5a423cd0-6c7c-4162-a6c9-00757da5ba08.webp">
-    <meta property="og:url" content="https://example.com/index.php">
+    <meta property="og:image" content="../images/hero-small.webp">
+    <meta property="og:url" content="https://bizlyhub.com/blogs/top-10-website-features.php">
     <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/main.css">
