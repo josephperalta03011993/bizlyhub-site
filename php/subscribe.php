@@ -4,6 +4,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 header('Content-Type: application/json');
 
+// Server connection
+// 8d$Z[1Dm
+// u414060592_landing
+// u414060592_landing
+
 // Database connection
 $servername = "localhost"; 
 $username = "root"; 

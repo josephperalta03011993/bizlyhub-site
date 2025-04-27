@@ -2,6 +2,13 @@
 // Start or resume session
 session_start();
 
+
+// Database connection parameters
+// $dbHost = "localhost";
+// $dbUser = "u414060592_landing";
+// $dbPass = '8d$Z[1Dm';
+// $dbName = "u414060592_landing";
+
 // Database connection parameters
 $dbHost = "localhost";
 $dbUser = "root";
