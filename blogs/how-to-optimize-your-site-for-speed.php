@@ -16,15 +16,16 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
         <div class="navbar-container">
-            <div class="logo">BizlyHub</div>
-            <button class="menu-toggle">☰</button>
-            <div class="nav-links">
+            <a href="#home" class="logo animate-in" aria-label="BizlyHub Home">BizlyHub</a>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            <div class="nav-links" role="menu">
                 <a href="../index.php">Home</a>
                 <a href="../index.php#features">Services</a>
                 <a href="../index.php#about">About</a>
                 <a href="../index.php#portfolio">Portfolio</a>
+                <a href="../blogs">Blogs</a>
                 <a href="../index.php#pricing">Pricing</a>
                 <a href="../index.php#contact">Contact</a>
             </div>

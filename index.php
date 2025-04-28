@@ -23,6 +23,7 @@
                 <a href="#features" role="menuitem">Services</a>
                 <a href="#about" role="menuitem">About</a>
                 <a href="#portfolio" role="menuitem">Portfolio</a>
+                <a href="blogs">Blogs</a>
                 <a href="#pricing" role="menuitem">Pricing</a>
                 <a href="#contact" role="menuitem">Contact</a>
             </div>
@@ -166,11 +167,12 @@
         <h2 class="section-title">Latest Insights</h2>
         <div class="blog-grid">
             <div class="blog-card">
-                <a href="blogs/web-trends-2025.html" target="_blank" rel="noopener noreferrer">
+                <a href="blogs/best-design-practices.php" target="_blank" rel="noopener noreferrer">
                     <img src="images/web-trends-2025.webp" alt="Blog post about web design trends" loading="lazy" width="300" height="200">
                     <div>
-                        <h4>Top Web Design Trends for 2025</h4>
-                        <p>Discover what’s shaping the future of web aesthetics.</p>
+                        <h4>Websites Best Design Practices</h4>
+                        <p>Crafting captivating websites requires a deep <br>
+                        understanding of <strong>effective design practices.</strong></p>
                     </div>
                 </a>
             </div>

@@ -3,20 +3,20 @@
 session_start();
 
 
-// Database connection parameters
-// $dbHost = "localhost";
-// $dbUser = "u414060592_landing";
-// $dbPass = '8d$Z[1Dm';
-// $dbName = "u414060592_landing";
+// Server connection parameters
+// $servername = "localhost";
+// $password = '8d$Z[1Dm';
+// $dbname = "u414060592_landing";
+// $username = "u414060592_landing";
 
 // Database connection parameters
-$dbHost = "localhost";
-$dbUser = "root";
-$dbPass = "";
-$dbName = "bizlyhub";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "bizlyhub";
 
 // Create database connection
-$conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {

@@ -17,15 +17,16 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
         <div class="navbar-container">
-            <div class="logo">Bizlyhub</div>
-            <button class="menu-toggle">☰</button>
-            <div class="nav-links">
+            <a href="#home" class="logo animate-in" aria-label="BizlyHub Home">BizlyHub</a>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            <div class="nav-links" role="menu">
                 <a href="../index.php">Home</a>
-                <a href="../index.php#features">Features</a>
+                <a href="../index.php#features">Services</a>
                 <a href="../index.php#about">About</a>
                 <a href="../index.php#portfolio">Portfolio</a>
+                <a href="../blogs">Blogs</a>
                 <a href="../index.php#pricing">Pricing</a>
                 <a href="../index.php#contact">Contact</a>
             </div>
@@ -38,7 +39,7 @@
         <h1>Top 10 Website Features That Keep Visitors Coming Back in 2025</h1>
         <p>In the ever-competitive digital landscape of <strong>2025</strong>, having a website that captivates and retains visitors is crucial. Certain <em><span>website features</span></em> play a significant role in enhancing <strong><span>visitor engagement</span></strong> and crafting a memorable <strong><span>digital experience</span></strong>.</p>
         <img 
-            width="495" height="300"
+            width="1100" height="500"
             class="blog-img"
             srcset="../images/hero-small.webp 600w,
                     ../images/hero-medium.webp 1200w,

@@ -13,6 +13,11 @@ $username = $_SESSION['username'];
 $role = $_SESSION['role'];
 
 // Database connection
+// $servername = "localhost";
+// $password = '8d$Z[1Dm';
+// $dbname = "u414060592_landing";
+// $username = "u414060592_landing";
+
 $servername = "localhost";
 $db_username = "root"; 
 $password = ""; 
