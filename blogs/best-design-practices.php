@@ -13,7 +13,7 @@
     <meta property="og:image" content="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg">
     <meta property="og:url" content="https://www.bizlyhub.com/blogs/best-design-practices.php">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="icon" type="image/png" href="../favicon.ico">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../styles/main.css">
@@ -41,12 +41,16 @@
         <br>
         <h1 class="animate-in">Craft Captivating Websites: Best Design Practices</h1>
         <p>Crafting captivating websites requires a deep understanding of <strong>effective design practices</strong>. A well-designed website is not just visually appealing; it's also crucial for providing an excellent <em>user experience</em>.</p>
-        <img class="blog-img" 
-             src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg" 
-             alt="Best Website Design, UI/UX Principles, User Experience Tips, Responsive Design" 
-             loading="lazy"
-             height="571"
-             width="1000">
+        <img class="blog-img"
+        srcset="../images/crafting-small.webp 600w,
+                ../images/crafting-medium.webp 1200w,
+                ../images/crafting-large.webp 1920w"
+        sizes="(max-width: 600px) 100vw,
+            (max-width: 1200px) 100vw,
+            1920px"
+        src="../images/crafting-large.webp"
+        alt="Top 10 Website Features That Keep Visitors Coming Back in 2025"
+        loading="lazy">
         <p>In this article, we will explore the essential elements that make a website truly captivating. From the psychology behind <strong>effective website design</strong> to the importance of a responsive layout, we will cover the key aspects that contribute to a website's success.</p>
         <p>By the end of this article, you will have a comprehensive understanding of how to craft a captivating website that stands the test of time.</p>
         <h2>Key Takeaways</h2>
@@ -138,12 +142,16 @@
         <p>Driving action on your website requires more than just an attractive design; it demands a strategic approach to conversion-focused design elements.</p>
         <h3>Strategic CTA Placement and Design</h3>
         <p>The placement and design of Call-to-Actions (CTAs) are critical in guiding users toward a desired action. <strong>Effective CTAs are clear, prominent, and actionable</strong>.</p>
-        <img class="blog-img" 
-             src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/bf7ab3bf-6784-4563-bd1e-fb640b91c88d.jpg" 
-             alt="user interface design elements" 
-             loading="lazy"
-             height="571"
-             width="1000">
+        <img class="blog-img"
+        srcset="../images/conversion-small.webp 600w,
+                ../images/conversion-medium.webp 1200w,
+                ../images/conversion-large.webp 1920w"
+        sizes="(max-width: 600px) 100vw,
+            (max-width: 1200px) 100vw,
+            1920px"
+        src="../images/crafting-large.webp"
+        alt="Top 10 Website Features That Keep Visitors Coming Back in 2025"
+        loading="lazy">
         <h3>Form Design That Reduces Abandonment</h3>
         <p><em>Simplifying form design</em> can significantly reduce abandonment rates. Best practices include minimizing the number of fields, using auto-fill options, and providing clear instructions and feedback.</p>
         <div class="table-container">
@@ -206,12 +214,16 @@
                 <tr><td>Performance Neglect</td><td>Slow loading times, reduced conversions</td><td>Optimize images, minify code, leverage browser caching</td></tr>
             </table>
         </div>
-        <img class="blog-img" 
-             src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/3b629f0d-b883-42ff-83b3-5e266a278331.jpg" 
-             alt="website design principles" 
-             loading="lazy"
-             height="571"
-             width="1000">
+        <img class="blog-img"
+        srcset="../images/performance-small.webp 600w,
+                ../images/performance-medium.webp 1200w,
+                ../images/performance-large.webp 1920w"
+        sizes="(max-width: 600px) 100vw,
+            (max-width: 1200px) 100vw,
+            1920px"
+        src="../images/performance-large.webp"
+        alt="Top 10 Website Features That Keep Visitors Coming Back in 2025"
+        loading="lazy">
         <h2>Conclusion: Crafting Websites That Stand the Test of Time</h2>
         <p>Crafting a website that remains relevant and effective over time requires a deep understanding of <strong>best website design</strong> practices and <strong>UI/UX principles</strong>. By applying these principles, you can create a website that not only looks great but also provides an excellent user experience.</p>
         <h2>FAQ</h2>

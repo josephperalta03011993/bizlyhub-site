@@ -13,7 +13,7 @@
     <meta property="og:image" content="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg">
     <meta property="og:url" content="https://www.bizlyhub.com/blogs">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="icon" type="image/png" href="../favicon.ico">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../styles/main.css">
@@ -42,50 +42,34 @@
         <div class="blog-grid">
             <!-- Blog Card 1 -->
             <a href="best-design-practices.php" class="blog-card">
-                <img src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
+                <img src="../images/crafting-small.webp" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
                 <div>
                     <h4>Craft Captivating Websites: Best Design Practices</h4>
                     <p>Learn how to create engaging and user-friendly websites with expert design principles and UI/UX strategies.</p>
                 </div>
             </a>
             <!-- Blog Card 2 -->
-            <a href="best-design-practices.php" class="blog-card">
-                <img src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
+            <a href="how-a-well-designed-website-can-boost-your-sales-in-2025.php" class="blog-card">
+                <img src="../images/boost-sale-2025-blog.webp" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
                 <div>
-                    <h4>Craft Captivating Websites: Best Design Practices</h4>
-                    <p>Learn how to create engaging and user-friendly websites with expert design principles and UI/UX strategies.</p>
+                    <h4>How a Well-Designed Website Can Boost Your Sales in 2025</h4>
+                    <p>Elevate your sales in 2025 with strategic web design. Improve UX, build trust, and convert visitors using smart design and UI/UX strategies.</p>
                 </div>
             </a>
             <!-- Blog Card 3 -->
-            <a href="best-design-practices.php" class="blog-card">
-                <img src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
+            <a href="how-to-optimize-your-site-for-speed.php" class="blog-card">
+                <img src="../images/loading.webp" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
                 <div>
-                    <h4>Craft Captivating Websites: Best Design Practices</h4>
-                    <p>Learn how to create engaging and user-friendly websites with expert design principles and UI/UX strategies.</p>
+                    <h4>How to Optimize Your Website for Speed</h4>
+                    <p>Boost your site’s speed with practical tips to improve load times, user experience, and SEO rankings.</p>
                 </div>
             </a>
             <!-- Blog Card 4 -->
-            <a href="best-design-practices.php" class="blog-card">
-                <img src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
+            <a href="top-10-website-features.php" class="blog-card">
+                <img src="../images/hero-medium.webp" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
                 <div>
-                    <h4>Craft Captivating Websites: Best Design Practices</h4>
-                    <p>Learn how to create engaging and user-friendly websites with expert design principles and UI/UX strategies.</p>
-                </div>
-            </a>
-            <!-- Blog Card 5 -->
-            <a href="best-design-practices.php" class="blog-card">
-                <img src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
-                <div>
-                    <h4>Craft Captivating Websites: Best Design Practices</h4>
-                    <p>Learn how to create engaging and user-friendly websites with expert design principles and UI/UX strategies.</p>
-                </div>
-            </a>
-            <!-- Blog Card 6 -->
-            <a href="best-design-practices.php" class="blog-card">
-                <img src="https://storage.googleapis.com/48877118-7272-4a4d-b302-0465d8aa4548/5a2c1935-7cc5-4101-8b4a-1c4edb53cd8f/767e871e-a8f5-41c3-ae5f-bedf14c06d46.jpg" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
-                <div>
-                    <h4>Craft Captivating Websites: Best Design Practices</h4>
-                    <p>Learn how to create engaging and user-friendly websites with expert design principles and UI/UX strategies.</p>
+                    <h4>Top 10 Website Features That Keep Visitors Coming Back in 2025</h4>
+                    <p>Explore the top 10 must-have website features to improve user experience, performance, and overall success.</p>
                 </div>
             </a>
         </div>

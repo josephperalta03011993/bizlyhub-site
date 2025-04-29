@@ -11,6 +11,7 @@
     <meta property="og:image" content="https://bizlyhub.com/images/speed-optimization-2025-blog.webp">
     <meta property="og:url" content="https://bizlyhub.com/index.php">
     <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="../favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/main.css">
 </head>
@@ -38,12 +39,16 @@
         <h1 class="animate-in">How to Optimize Your Site for Speed</h1>
         <p>A <strong>fast-loading site</strong> is crucial for user interaction. In today's digital world, every second matters. Slow sites lose visitors, hurt search rankings, and limit growth.</p>
         <p>Users want instant results. Search engines like Google favor fast sites. This guide offers steps to make your site fast and effective.</p>
-        <img class="blog-img" 
-             src="../images/loading.webp" 
-             alt="SEO, website speed, website design and development" 
-             loading="lazy"
-             height="571"
-             width="1000">
+        <img class="blog-img"
+        srcset="../images/loading-small.webp 600w,
+                ../images/loading-medium.webp 1200w,
+                ../images/loading-large.webp 1920w"
+        sizes="(max-width: 600px) 100vw,
+            (max-width: 1200px) 100vw,
+            1920px"
+        src="../images/loading-large.webp"
+        alt="Top 10 Website Features That Keep Visitors Coming Back in 2025"
+        loading="lazy">
         <h2>Key Takeaways</h2>
         <ul>
             <li>Fast-loading sites improve user satisfaction and reduce bounce rates.</li>
@@ -132,12 +137,16 @@
                 <tr><td><strong>Caching Strategies</strong></td><td>Reduces server hits by 50%+</td></tr>
             </table>
         </div>
-        <img class="blog-img" 
-             src="../images/caching.webp"
-             alt="caching strateg`ies" 
-             loading="lazy"
-             height="571"
-             width="1000">
+        <img class="blog-img"
+        srcset="../images/caching-small.webp 600w,
+                ../images/caching-medium.webp 1200w,
+                ../images/caching-large.webp 1920w"
+        sizes="(max-width: 600px) 100vw,
+            (max-width: 1200px) 100vw,
+            1920px"
+        src="../images/caching-large.webp"
+        alt="Top 10 Website Features That Keep Visitors Coming Back in 2025"
+        loading="lazy">
         <h2>Leveraging Caching and CDN</h2>
         <h3>Cache Configuration</h3>
         <ul>
@@ -158,12 +167,16 @@
             <li>JPEG, WebP, SVG formats</li>
             <li>Lazy loading</li>
         </ul>
-        <img class="blog-img" 
-             src="../images/optimizing.webp"
-             alt="image compression techniques" 
-             loading="lazy"
-             height="571"
-             width="1000">
+        <img class="blog-img"
+        srcset="../images/optimizing-small.webp 600w,
+                ../images/optimizing-medium.webp 1200w,
+                ../images/optimizing-large.webp 1920w"
+        sizes="(max-width: 600px) 100vw,
+            (max-width: 1200px) 100vw,
+            1920px"
+        src="../images/optimizing-large.webp"
+        alt="Top 10 Website Features That Keep Visitors Coming Back in 2025"
+        loading="lazy">
         <h2>Monitoring and Measuring Performance</h2>
         <p>Track <em>performance metrics</em> for a fast site.</p>
         <h3>Tools and Metrics</h3>
