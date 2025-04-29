@@ -58,7 +58,7 @@
             </a>
             <!-- Blog Card 3 -->
             <a href="how-to-optimize-your-site-for-speed.php" class="blog-card">
-                <img src="../images/loading.webp" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
+                <img src="../images/loading-medium.webp" alt="Best Website Design Practices" loading="lazy" height="200" width="400">
                 <div>
                     <h4>How to Optimize Your Website for Speed</h4>
                     <p>Boost your site’s speed with practical tips to improve load times, user experience, and SEO rankings.</p>
