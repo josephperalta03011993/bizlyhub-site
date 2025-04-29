@@ -60,7 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'joseph.peralta03011993@gmail.com',
             'jhelyntesiorna02@gmail.com',
             'payumojohnniere8@gmail.com',
-            'riarencs@gmail.com'
+            'riarencs@gmail.com',
+            'bizlyhub@gmail.com'
         ];
 
         $success = sendEmailNotifications($recipients, $subject, $body);
