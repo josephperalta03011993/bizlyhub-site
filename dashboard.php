@@ -1,35 +1,5 @@
 <?php
-// Start or resume session
-session_start();
-
-// Check if user is logged in
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header("Location: admin.php?error=Please login to access the dashboard");
-    exit();
-}
-
-// Get user information from session
-$username = $_SESSION['username'];
-$role = $_SESSION['role'];
-
-// Database connection
-// $servername = "localhost";
-// $password = '8d$Z[1Dm';
-// $dbname = "u414060592_landing";
-// $username = "u414060592_landing";
-
-$servername = "localhost";
-$db_username = "root"; 
-$password = ""; 
-$dbname = "bizlyhub"; 
-
-// Create connection
-$conn = new mysqli($servername, $db_username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include('php/conn.php');
 
 // Get subscriber data
 $subscribers = [];
@@ -66,6 +36,9 @@ if (isset($_GET['export']) && $_GET['export'] == 'csv') {
     fclose($output);
     exit;
 }
+
+// Determine current page for menu highlighting
+$current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,163 +49,7 @@ if (isset($_GET['export']) && $_GET['export'] == 'csv') {
     <title>BizlyHub - Dashboard</title>
     <link rel="icon" type="image/png" href="favicon.ico">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/dashboard.css">
-    <style>
-        /* Additional styling for subscriber table */
-        .subscriber-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .subscriber-table th, 
-        .subscriber-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .subscriber-table th {
-            background-color: #f9f9f9;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .subscriber-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .subscriber-table tr:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .dashboard-widgets {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .widget {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .widget h3 {
-            margin-top: 0;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .table-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .export-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .search-box {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 250px;
-        }
-        
-        .subscriber-count {
-            background-color: #e9f7fe;
-            color: #3498db;
-            padding: 12px 20px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .no-data {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-        }
-        
-        /* Mobile responsiveness */
-        @media screen and (max-width: 768px) {
-            .subscriber-table {
-                display: block;
-                overflow-x: auto;
-            }
-            
-            .subscriber-table thead, 
-            .subscriber-table tbody, 
-            .subscriber-table th, 
-            .subscriber-table td, 
-            .subscriber-table tr {
-                display: block;
-            }
-            
-            .subscriber-table thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            
-            .subscriber-table tr {
-                border: 1px solid #ccc;
-                margin-bottom: 15px;
-                border-radius: 6px;
-                overflow: hidden;
-            }
-            
-            .subscriber-table td {
-                border: none;
-                border-bottom: 1px solid #eee; 
-                position: relative;
-                padding-left: 50%;
-                text-align: right;
-            }
-            
-            .subscriber-table td:before {
-                position: absolute;
-                top: 12px;
-                left: 12px;
-                width: 45%; 
-                padding-right: 10px; 
-                white-space: nowrap;
-                font-weight: 600;
-                text-align: left;
-            }
-            
-            .subscriber-table td:nth-of-type(1):before { content: "ID"; }
-            .subscriber-table td:nth-of-type(2):before { content: "Email"; }
-            .subscriber-table td:nth-of-type(3):before { content: "Subscribe Date"; }
-            
-            .table-actions {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-            
-            .search-box {
-                width: 100%;
-            }
-        }
-    </style>
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
@@ -243,6 +60,20 @@ if (isset($_GET['export']) && $_GET['export'] == 'csv') {
             <a href="logout.php" class="logout-btn">Logout</a>
         </div>
     </header>
+    
+    <!-- New Navigation Menu -->
+    <nav class="main-nav">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <ul class="nav-container" id="mainMenu">
+            <li class="nav-item">
+                <a href="dashboard.php" class="nav-link <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="expenses.php" class="nav-link <?php echo ($current_page == 'expenses.php') ? 'active' : ''; ?>">Expenses</a>
+            </li>
+            <!-- Additional menu items can be added here -->
+        </ul>
+    </nav>
     
     <main class="dashboard-content">
         <h1>BizlyHub Dashboard</h1>
@@ -295,6 +126,7 @@ if (isset($_GET['export']) && $_GET['export'] == 'csv') {
     </footer>
     
     <script>
+        // Table search functionality
         function searchTable() {
             // Get input value and convert to lowercase
             const input = document.getElementById('searchSubscribers');
@@ -319,6 +151,11 @@ if (isset($_GET['export']) && $_GET['export'] == 'csv') {
                 }
             }
         }
+        
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mainMenu').classList.toggle('show');
+        });
     </script>
 </body>
 </html>
