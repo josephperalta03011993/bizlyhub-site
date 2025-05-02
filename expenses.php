@@ -19,7 +19,7 @@
 <header class="dashboard-header">
         <div class="logo">BizlyHub</div>
         <div class="user-info">
-            Welcome, <?php echo htmlspecialchars($username); ?> (<?php echo htmlspecialchars($role); ?>)
+            <span class="welcome-info">Welcome, <?php echo htmlspecialchars($username); ?> (<?php echo htmlspecialchars($role); ?>)</span>
             <a href="logout.php" class="logout-btn">Logout</a>
         </div>
     </header>

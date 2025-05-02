@@ -497,6 +497,10 @@ textarea.form-control {
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
     .main-nav {
         flex-direction: column;
         align-items: flex-start;
@@ -639,6 +643,18 @@ textarea.form-control {
     }
 
     .export-btn, .filter-btn {
+        margin-top: .5rem;
         width: 100%;
+    }
+
+    .dashboard-content {
+        padding: .5rem;
+        max-width: 88%;
+        margin: 0;
+        width: 100%;
+    }
+
+    .dashboard-header .welcome-info {
+        display: none;
     }
 }
