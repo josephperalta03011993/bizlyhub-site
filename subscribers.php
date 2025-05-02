@@ -46,37 +46,17 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BizlyHub - Dashboard</title>
+    <title>BizlyHub - subscribers</title>
     <link rel="icon" type="image/png" href="favicon.ico">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/subscribers.css">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
-    <header class="dashboard-header">
-        <div class="logo">BizlyHub</div>
-        <div class="user-info">
-            Welcome, <?php echo htmlspecialchars($username); ?> (<?php echo htmlspecialchars($role); ?>)
-            <a href="logout.php" class="logout-btn">Logout</a>
-        </div>
-    </header>
-    
-    <!-- New Navigation Menu -->
-    <nav class="main-nav">
-        <button class="menu-toggle" id="menuToggle">☰</button>
-        <ul class="nav-container" id="mainMenu">
-            <li class="nav-item">
-                <a href="dashboard.php" class="nav-link <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a href="expenses.php" class="nav-link <?php echo ($current_page == 'expenses.php') ? 'active' : ''; ?>">Expenses</a>
-            </li>
-            <!-- Additional menu items can be added here -->
-        </ul>
-    </nav>
+    <?php include('layouts/header.php'); ?>
     
     <main class="dashboard-content">
-        <h1>BizlyHub Dashboard</h1>
+        <h1>Subscribers</h1>
         
         <div class="dashboard-widgets">
             <div class="widget">

@@ -16,27 +16,7 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
-<header class="dashboard-header">
-        <div class="logo">BizlyHub</div>
-        <div class="user-info">
-            <span class="welcome-info">Welcome, <?php echo htmlspecialchars($username); ?> (<?php echo htmlspecialchars($role); ?>)</span>
-            <a href="logout.php" class="logout-btn">Logout</a>
-        </div>
-    </header>
-    
-    <!-- New Navigation Menu -->
-    <nav class="main-nav">
-        <button class="menu-toggle" id="menuToggle">☰</button>
-        <ul class="nav-container" id="mainMenu">
-            <li class="nav-item">
-                <a href="dashboard.php" class="nav-link <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a href="expenses.php" class="nav-link <?php echo ($current_page == 'expenses.php') ? 'active' : ''; ?>">Expenses</a>
-            </li>
-            <!-- Additional menu items can be added here -->
-        </ul>
-    </nav>
+    <?php include('layouts/header.php'); ?>
 
     <main class="dashboard-content">
         <h1>Expense Management</h1>
