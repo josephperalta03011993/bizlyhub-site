@@ -1,7 +1,246 @@
-<?php
+<?php 
     include_once('php/conn.php');
-    include_once('php/expenses.php');
+    
+    // Initialize variables
+    $message = '';
+    $messageType = '';
+    $recent_expenses = [];
+    $total_today = 0.00;
+    $total_week = 0.00;
+    $total_month = 0.00;
+    $categories = [];
+    $payment_methods = [];
+
+    // Redirect if not logged in
+    if (!isset($_SESSION['username'])) {
+        header("Location: login.php");
+        exit;
+    }
+    $username = $_SESSION['username'];
+    $role = $_SESSION['role'] ?? 'user';
+
+    // Determine current page
+    $current_page = basename($_SERVER['PHP_SELF']);
+
+    // Pagination settings
+    $records_per_page = 10;
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($page - 1) * $records_per_page;
+
+    // Date filter settings
+    $from_date = isset($_GET['from']) ? $_GET['from'] : date('Y-m-d');
+    $to_date = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d');
+    $apply_filter = isset($_GET['filter']);
+
+    // Fetch categories
+    $sql = "SELECT id, name FROM expense_categories ORDER BY name";
+    $result = $conn->query($sql);
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $categories[] = $row;
+        }
+    }
+
+    // Fetch payment methods
+    $sql = "SELECT id, name FROM payment_methods ORDER BY name";
+    $result = $conn->query($sql);
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $payment_methods[] = $row;
+        }
+    }
+
+    // Handle form submission
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_expense'])) {
+        $amount = floatval($_POST['amount']);
+        $category_id = intval($_POST['category_id']);
+        $payment_method_id = intval($_POST['payment_method_id']);
+        $expense_date = $_POST['expense_date'];
+        $notes = trim($_POST['notes']);
+        $created_by = $username;
+
+        // Validate inputs
+        if ($amount <= 0 || $category_id <= 0 || $payment_method_id <= 0 || empty($expense_date)) {
+            $message = "All required fields must be filled correctly.";
+            $messageType = "error";
+        } else {
+            try {
+                $sql = "INSERT INTO expenses (amount, category_id, payment_method_id, notes, expense_date, created_by) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("diisss", $amount, $category_id, $payment_method_id, $notes, $expense_date, $created_by);
+                if ($stmt->execute()) {
+                    $message = "Expense added successfully!";
+                    $messageType = "success";
+                } else {
+                    throw new Exception("Database error: " . $conn->error);
+                }
+                $stmt->close();
+            } catch (Exception $e) {
+                $message = "Error adding expense: " . $e->getMessage();
+                $messageType = "error";
+            }
+        }
+    }
+
+    // Fetch analytics data
+    try {
+        // Today's expenses
+        $sql = "SELECT SUM(amount) as total FROM expenses WHERE DATE(expense_date) = CURDATE()";
+        $result = $conn->query($sql);
+        if ($result && $row = $result->fetch_assoc()) {
+            $total_today = floatval($row['total'] ?? 0.00);
+        }
+
+        // This week's expenses
+        $sql = "SELECT SUM(amount) as total FROM expenses WHERE YEARWEEK(expense_date) = YEARWEEK(CURDATE())";
+        $result = $conn->query($sql);
+        if ($result && $row = $result->fetch_assoc()) {
+            $total_week = floatval($row['total'] ?? 0.00);
+        }
+
+        // This month's expenses
+        $sql = "SELECT SUM(amount) as total FROM expenses WHERE YEAR(expense_date) = YEAR(CURDATE()) AND MONTH(expense_date) = MONTH(CURDATE())";
+        $result = $conn->query($sql);
+        if ($result && $row = $result->fetch_assoc()) {
+            $total_month = floatval($row['total'] ?? 0.00);
+        }
+
+        // Count total expenses for pagination (based on filter)
+        $sql = "SELECT COUNT(*) as total FROM expenses";
+        if ($apply_filter) {
+            $sql .= " WHERE expense_date BETWEEN ? AND ?";
+        } else {
+            $sql .= " WHERE DATE(expense_date) = CURDATE()";
+        }
+        $stmt = $conn->prepare($sql);
+        if ($apply_filter) {
+            $stmt->bind_param("ss", $from_date, $to_date);
+        }
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $total_records = $result->fetch_assoc()['total'];
+        $total_pages = ceil($total_records / $records_per_page);
+        $stmt->close();
+
+        // Fetch recent expenses with pagination (filtered by date)
+        $sql = "SELECT e.id, e.amount, e.expense_date, e.notes, ec.name as category_name, pm.name as payment_method
+                FROM expenses e
+                JOIN expense_categories ec ON e.category_id = ec.id
+                JOIN payment_methods pm ON e.payment_method_id = pm.id";
+        if ($apply_filter) {
+            $sql .= " WHERE e.expense_date BETWEEN ? AND ?";
+        } else {
+            $sql .= " WHERE DATE(e.expense_date) = CURDATE()";
+        }
+        $sql .= " ORDER BY e.expense_date DESC LIMIT ? OFFSET ?";
+        $stmt = $conn->prepare($sql);
+        if ($apply_filter) {
+            $stmt->bind_param("ssii", $from_date, $to_date, $records_per_page, $offset);
+        } else {
+            $stmt->bind_param("ii", $records_per_page, $offset);
+        }
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $recent_expenses[] = $row;
+            }
+        }
+        $stmt->close();
+    } catch (Exception $e) {
+        $message = "Error fetching data: " . $e->getMessage();
+        $messageType = "error";
+    }
+
+    // Handle CSV export (export filtered results)
+    if (isset($_GET['export']) && $_GET['export'] == 'csv') {
+        $from_date = date('Y-m-d', strtotime($_GET['from'] ?? date('Y-m-d')));
+        $to_date = date('Y-m-d', strtotime($_GET['to'] ?? date('Y-m-d')));
+        if (strtotime($from_date) > strtotime($to_date)) {
+            $from_date = date('Y-m-01');
+            $to_date = date('Y-m-t');
+        }
+
+        try {
+            $sql = "SELECT e.id, e.amount, ec.name as category_name, pm.name as payment_method, e.expense_date, e.notes
+                    FROM expenses e
+                    JOIN expense_categories ec ON e.category_id = ec.id
+                    JOIN payment_methods pm ON e.payment_method_id = pm.id
+                    WHERE e.expense_date BETWEEN ? AND ?
+                    ORDER BY e.expense_date DESC";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ss", $from_date, $to_date);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            header('Content-Type: text/csv');
+            header('Content-Disposition: attachment; filename="expenses-' . date('Y-m-d') . '.csv"');
+            
+            $output = fopen('php://output', 'w');
+            fputcsv($output, ['ID', 'Amount', 'Category', 'Payment Method', 'Date', 'Notes']);
+            
+            while ($row = $result->fetch_assoc()) {
+                fputcsv($output, [
+                    $row['id'],
+                    $row['amount'],
+                    $row['category_name'],
+                    $row['payment_method'],
+                    $row['expense_date'],
+                    $row['notes']
+                ]);
+            }
+            
+            fclose($output);
+            $stmt->close();
+            exit;
+        } catch (Exception $e) {
+            $message = "Error exporting CSV: " . $e->getMessage();
+            $messageType = "error";
+        }
+    }
+
+    // Fetch expenses by category for the current month for the pie chart
+    $current_month_start = date('Y-m-01');
+    $current_month_end = date('Y-m-t');
+    $sql_pie = "SELECT c.name, SUM(e.amount) as total
+                FROM expenses e
+                JOIN expense_categories c ON e.category_id = c.id
+                WHERE e.expense_date BETWEEN '$current_month_start' AND '$current_month_end'
+                GROUP BY c.id, c.name";
+    $result_pie = $conn->query($sql_pie);
+    $pie_data = [];
+    $pie_labels = [];
+    $pie_colors = ['#3a86ff', '#ff6b6b', '#28a745', '#feca57', '#8338ec', '#06d6a0', '#ff006e'];
+    $color_index = 0;
+
+    if ($result_pie && $result_pie->num_rows > 0) {
+        while ($row = $result_pie->fetch_assoc()) {
+            $pie_labels[] = $row['name'];
+            $pie_data[] = $row['total'];
+            $pie_colors[$color_index] = isset($pie_colors[$color_index]) ? $pie_colors[$color_index] : '#'.substr(md5(rand()), 0, 6);
+            $color_index++;
+        }
+    }
+
+    // Fetch projected expenses (average of last 3 months)
+    $projected_expenses = 0;
+    $sql_projected = "SELECT AVG(monthly_total) as avg_expenses
+                    FROM (
+                        SELECT SUM(amount) as monthly_total
+                        FROM expenses
+                        WHERE expense_date >= DATE_SUB('$current_month_start', INTERVAL 3 MONTH)
+                        AND expense_date < '$current_month_start'
+                        GROUP BY YEAR(expense_date), MONTH(expense_date)
+                    ) as monthly_totals";
+    $result_projected = $conn->query($sql_projected);
+    if ($result_projected && $result_projected->num_rows > 0) {
+        $row = $result_projected->fetch_assoc();
+        $projected_expenses = round($row['avg_expenses'], 2);
+    }
+
+    $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +249,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>BizlyHub - Expenses</title>
     <link rel="icon" type="image/png" href="favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <link rel="stylesheet" href="styles/expenses.css">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <?php include('layouts/header.php'); ?>
@@ -43,6 +283,14 @@
                         <div class="analytics-title">This Month's Expenses</div>
                         <div class="analytics-value">₱<?php echo number_format($total_month, 2); ?></div>
                     </div>
+                    <div class="analytics-card">
+                        <div class="analytics-title">Projected Next Month</div>
+                        <div class="analytics-value">₱<?php echo number_format($projected_expenses, 2); ?></div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Expenses by Category (This Month)</h3>
+                    <canvas id="expensePieChart"></canvas>
                 </div>
             </div>
 
@@ -170,11 +418,6 @@
     </footer>
 
     <script>
-        // Toggle mobile menu
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('mainMenu').classList.toggle('show');
-        });
-        
         // Search functionality for the expenses table
         document.getElementById('expenseSearch').addEventListener('keyup', function() {
             const searchTerm = this.value.toLowerCase();
@@ -198,6 +441,50 @@
                 rows[i].style.display = found ? '' : 'none';
             }
         });
+
+        // Pie chart for expenses by category
+        if (document.getElementById('expensePieChart')) {
+            const pieCtx = document.getElementById('expensePieChart').getContext('2d');
+            new Chart(pieCtx, {
+                type: 'pie',
+                data: {
+                    labels: <?php echo json_encode($pie_labels); ?>,
+                    datasets: [{
+                        data: <?php echo json_encode($pie_data); ?>,
+                        backgroundColor: <?php echo json_encode($pie_colors); ?>,
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: 'Poppins',
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ₱';
+                                    }
+                                    label += Number(context.raw).toFixed(2);
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>

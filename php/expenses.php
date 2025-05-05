@@ -1,4 +1,6 @@
 <?php 
+    include_once('php/conn.php');
+    
     // Initialize variables
     $message = '';
     $messageType = '';
@@ -197,5 +199,289 @@
         }
     }
 
+    // Fetch expenses by category for the current month for the pie chart
+    $current_month_start = date('Y-m-01');
+    $current_month_end = date('Y-m-t');
+    $sql_pie = "SELECT c.name, SUM(e.amount) as total
+                FROM expenses e
+                JOIN expense_categories c ON e.category_id = c.id
+                WHERE e.expense_date BETWEEN '$current_month_start' AND '$current_month_end'
+                GROUP BY c.id, c.name";
+    $result_pie = $conn->query($sql_pie);
+    $pie_data = [];
+    $pie_labels = [];
+    $pie_colors = ['#3a86ff', '#ff6b6b', '#28a745', '#feca57', '#8338ec', '#06d6a0', '#ff006e'];
+    $color_index = 0;
+
+    if ($result_pie && $result_pie->num_rows > 0) {
+        while ($row = $result_pie->fetch_assoc()) {
+            $pie_labels[] = $row['name'];
+            $pie_data[] = $row['total'];
+            $pie_colors[$color_index] = isset($pie_colors[$color_index]) ? $pie_colors[$color_index] : '#'.substr(md5(rand()), 0, 6);
+            $color_index++;
+        }
+    }
+
+    // Fetch projected expenses (average of last 3 months)
+    $projected_expenses = 0;
+    $sql_projected = "SELECT AVG(monthly_total) as avg_expenses
+                    FROM (
+                        SELECT SUM(amount) as monthly_total
+                        FROM expenses
+                        WHERE expense_date >= DATE_SUB('$current_month_start', INTERVAL 3 MONTH)
+                        AND expense_date < '$current_month_start'
+                        GROUP BY YEAR(expense_date), MONTH(expense_date)
+                    ) as monthly_totals";
+    $result_projected = $conn->query($sql_projected);
+    if ($result_projected && $result_projected->num_rows > 0) {
+        $row = $result_projected->fetch_assoc();
+        $projected_expenses = round($row['avg_expenses'], 2);
+    }
+
     $conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BizlyHub - Expenses</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="styles/expenses.css">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <?php include('layouts/header.php'); ?>
+
+    <main class="dashboard-content">
+        <h1>Expense Management</h1>
+
+        <?php if (!empty($message)): ?>
+        <div class="message <?php echo $messageType; ?>">
+            <?php echo $message; ?>
+        </div>
+        <?php endif; ?>
+
+        <div class="dashboard-widgets">
+            <div class="widget">
+                <h3>Expense Overview</h3>
+                <div class="analytics-container">
+                    <div class="analytics-card">
+                        <div class="analytics-title">Today's Expenses</div>
+                        <div class="analytics-value">₱<?php echo number_format($total_today, 2); ?></div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-title">This Week's Expenses</div>
+                        <div class="analytics-value">₱<?php echo number_format($total_week, 2); ?></div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-title">This Month's Expenses</div>
+                        <div class="analytics-value">₱<?php echo number_format($total_month, 2); ?></div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-title">Projected Next Month</div>
+                        <div class="analytics-value">₱<?php echo number_format($projected_expenses, 2); ?></div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Expenses by Category (This Month)</h3>
+                    <canvas id="expensePieChart"></canvas>
+                </div>
+            </div>
+
+            <div class="expense-form-container">
+                <h3 class="form-title"><i class="fas fa-wallet"></i> Add New Expense</h3>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="amount" class="form-label"><i class="fas fa-money-bill"></i> Amount (₱) <span class="required">*</span></label>
+                            <input type="number" step="0.01" min="0.01" id="amount" name="amount" class="form-control" required placeholder="Enter amount">
+                        </div>
+                        <div class="form-group">
+                            <label for="expense_date" class="form-label"><i class="fas fa-calendar-days"></i> Date <span class="required">*</span></label>
+                            <input type="date" id="expense_date" name="expense_date" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="category_id" class="form-label"><i class="fas fa-list-ul"></i> Category <span class="required">*</span></label>
+                            <select id="category_id" name="category_id" class="form-control" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <?php foreach ($categories as $category): ?>
+                                <option value="<?php echo $category['id']; ?>"><?php echo htmlspecialchars($category['name']); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment_method_id" class="form-label"><i class="fas fa-credit-card"></i> Payment Method <span class="required">*</span></label>
+                            <select id="payment_method_id" name="payment_method_id" class="form-control" required>
+                                <option value="" disabled selected>Select payment method</option>
+                                <?php foreach ($payment_methods as $method): ?>
+                                <option value="<?php echo $method['id']; ?>"><?php echo htmlspecialchars($method['name']); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes" class="form-label"><i class="fas fa-note-sticky"></i> Notes</label>
+                        <textarea id="notes" name="notes" class="form-control" rows="3" placeholder="Enter notes (optional)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="add_expense" class="submit-btn"><i class="fas fa-plus"></i> Add Expense</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="widget">
+                <h3>Recent Expenses (Total: <?php echo $total_records; ?>)</h3>
+                
+                <div class="table-actions">
+                    <div class="date-filters">
+                        <form action="" method="get" id="filterForm">
+                            <label for="from">From:</label>
+                            <input type="date" id="from" name="from" value="<?php echo htmlspecialchars($from_date); ?>">
+                            <label for="to">To:</label>
+                            <input type="date" id="to" name="to" value="<?php echo htmlspecialchars($to_date); ?>">
+                            <br><br>
+                            <button type="submit" name="filter" class="filter-btn">Filter</button>
+                            <button type="submit" name="export" value="csv" class="export-btn">Export to CSV</button>
+                        </form>
+                    </div>
+                    <div class="search">
+                        <input type="text" id="expenseSearch" class="search-box" placeholder="Search expenses...">
+                    </div>
+                </div>
+
+                <?php if (count($recent_expenses) > 0): ?>
+                <table class="expenses-table" id="expensesTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ID</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Payment Method</th>
+                            <th>Date</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $row_number = $offset + 1; ?>
+                        <?php foreach ($recent_expenses as $expense): ?>
+                        <tr>
+                            <td><?php echo $row_number++ . '.'; ?></td>
+                            <td><?php echo $expense['id']; ?></td>
+                            <td>₱<?php echo number_format($expense['amount'], 2); ?></td>
+                            <td><?php echo htmlspecialchars($expense['category_name']); ?></td>
+                            <td><?php echo htmlspecialchars($expense['payment_method']); ?></td>
+                            <td><?php echo date('M d, Y', strtotime($expense['expense_date'])); ?></td>
+                            <td><?php echo htmlspecialchars($expense['notes']); ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
+                <!-- Pagination Links -->
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                    <a href="?page=<?php echo $page - 1; ?>&from=<?php echo urlencode($from_date); ?>&to=<?php echo urlencode($to_date); ?>&filter=1">Previous</a>
+                    <?php else: ?>
+                    <a href="#" class="disabled">Previous</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                    <a href="?page=<?php echo $i; ?>&from=<?php echo urlencode($from_date); ?>&to=<?php echo urlencode($to_date); ?>&filter=1" class="<?php echo $i == $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $total_pages): ?>
+                    <a href="?page=<?php echo $page + 1; ?>&from=<?php echo urlencode($from_date); ?>&to=<?php echo urlencode($to_date); ?>&filter=1">Next</a>
+                    <?php else: ?>
+                    <a href="#" class="disabled">Next</a>
+                    <?php endif; ?>
+                </div>
+                <?php else: ?>
+                <div class="no-data">
+                    <p>No expenses recorded for the selected date range. Adjust the dates or add a new expense.</p>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </main>
+
+    <footer class="dashboard-footer">
+        <p>© <?php echo date('Y'); ?> BizlyHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Search functionality for the expenses table
+        document.getElementById('expenseSearch').addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const table = document.getElementById('expensesTable');
+            if (!table) return;
+            const rows = table.getElementsByTagName('tr');
+            
+            for (let i = 1; i < rows.length; i++) {
+                let found = false;
+                const cells = rows[i].getElementsByTagName('td');
+                
+                for (let j = 0; j < cells.length; j++) {
+                    const cellText = cells[j].textContent.toLowerCase();
+                    
+                    if (cellText.includes(searchTerm)) {
+                        found = true;
+                        break;
+                    }
+                }
+                
+                rows[i].style.display = found ? '' : 'none';
+            }
+        });
+
+        // Pie chart for expenses by category
+        const ctx = document.getElementById('expensePieChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: <?php echo json_encode($pie_labels); ?>,
+                datasets: [{
+                    data: <?php echo json_encode($pie_data); ?>,
+                    backgroundColor: <?php echo json_encode($pie_colors); ?>,
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                family: 'Poppins',
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ₱';
+                                }
+                                label += Number(context.raw).toFixed(2);
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

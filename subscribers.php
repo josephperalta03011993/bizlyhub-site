@@ -46,7 +46,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BizlyHub - subscribers</title>
+    <title>BizlyHub - Subscribers</title>
     <link rel="icon" type="image/png" href="favicon.ico">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <link rel="stylesheet" href="styles/subscribers.css">
@@ -131,11 +131,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 }
             }
         }
-        
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('mainMenu').classList.toggle('show');
-        });
     </script>
 </body>
 </html>
