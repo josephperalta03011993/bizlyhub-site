@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $update_stmt->close();
             
             // Redirect to dashboard or home page
-            header("Location: subscribers.php");
+            header("Location: expenses.php");
             exit();
         } else {
             // Password is incorrect
