@@ -72,7 +72,14 @@
                     <p>Explore the top 10 must-have website features to improve user experience, performance, and overall success.</p>
                 </div>
             </a>
-        </div>
+        <!-- Blog Card 5 -->
+            <a href="10-signs-your-business-needs-a-website.php" class="blog-card">
+                <img src="../images/brand-medium.webp" alt="10 Signs Your Business Needs a Website" loading="lazy" height="200" width="400">
+                <div>
+                    <h4>10 Signs Your Business Needs a Website (Even If You're on Facebook)</h4>
+                    <p>Explore the top 10 signs your business needs a website, even if you're already on Facebook, to boost growth and control.</p>
+                </div>
+            </a>
     </section>
 
     <!-- Footer -->
