@@ -21,6 +21,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <a href="expenses.php" class="nav-link <?php echo ($current_page == 'expenses.php') ? 'active' : ''; ?>">Expenses</a>
         </li>
         <li class="nav-item">
+            <a href="marketing.php" class="nav-link <?php echo ($current_page == 'marketing.php') ? 'active' : ''; ?>">Marketing</a>
+        </li>
+        <li class="nav-item">
             <a href="pricing.php" class="nav-link <?php echo ($current_page == 'pricing.php') ? 'active' : ''; ?>">Pricing</a>
         </li>
         <li class="nav-item">

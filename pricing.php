@@ -18,9 +18,7 @@ include('php/conn.php');
     <?php include('layouts/header.php'); ?>
 
     <main class="dashboard-content">
-        <h1>Website Design & Development Proposal</h1>
-        <p><strong>Prepared by:</strong> [Your Name / BizlyHub]</p>
-        <p><strong>Date:</strong> [Insert Date]</p>
+        <h1>Website Design & Development</h1>
 
         <h2>Website Development Packages</h2>
         <table class="pricing-table development">

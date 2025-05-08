@@ -1,0 +1,341 @@
+/* Define CSS custom properties for consistent colors */
+:root {
+    --primary-color: #3a86ff;
+    --secondary-color: #2b3452;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --light-bg: #f8f9fa;
+    --text-color: #333;
+}
+
+/* Header Styles */
+.dashboard-header {
+    background-color: var(--secondary-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.dashboard-header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.dashboard-header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dashboard-header .logout-btn {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, outline 0.3s ease;
+}
+
+.dashboard-header .logout-btn:hover {
+    background-color: #c82333;
+}
+
+.dashboard-header .logout-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Navigation Styles */
+.main-nav {
+    background-color: var(--light-bg);
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-right: 1rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease, outline 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.nav-link.active {
+    background-color: #2a6acc;
+    color: white;
+    text-decoration: underline;
+}
+
+.nav-link:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    display: none;
+}
+
+/* Footer Styles */
+.dashboard-footer {
+    background-color: var(--secondary-color);
+    color: #adb5bd;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+}
+
+/* Base Layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Content Area */
+.dashboard-content {
+    flex: 1;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* Marketing Tables */
+.marketing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.marketing-table th,
+.marketing-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.marketing-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.marketing-table tr:last-child td {
+    border-bottom: none;
+}
+
+.marketing-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.marketing-table tbody tr:last-child td {
+    font-weight: 600;
+}
+
+/* Lists (Goals, Metrics) */
+.goals-list,
+.metrics-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.goals-list li,
+.metrics-list li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.metrics-list li strong {
+    color: var(--primary-color);
+}
+
+/* Assistant Guide */
+.assistant-guide {
+    background-color: #f9f9f9;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.assistant-guide h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.assistant-guide h4 {
+    color: var(--secondary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.assistant-guide ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.assistant-guide .highlight {
+    background-color: #e0f7fa;
+    padding: 1rem;
+    border-left: 4px solid #00796b;
+    margin-bottom: 1rem;
+}
+
+.assistant-guide .task {
+    background-color: #fffde7;
+    padding: 0.5rem 1rem;
+    border-left: 4px solid #fbc02d;
+    margin-bottom: 0.5rem;
+}
+
+.assistant-guide p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .dashboard-content {
+        padding: 0.75rem;
+        max-width: 100%;
+        margin: 0;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .marketing-table {
+        border: none;
+    }
+
+    .marketing-table thead {
+        display: none;
+    }
+
+    .marketing-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .marketing-table td {
+        display: block;
+        width: 100%;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    .marketing-table td:before {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        width: 45%;
+        padding-right: 0.5rem;
+        white-space: nowrap;
+        font-weight: 600;
+        color: #495057;
+        text-align: left;
+    }
+
+    .marketing-table.channels td:nth-of-type(1):before { content: "Channel"; }
+    .marketing-table.channels td:nth-of-type(2):before { content: "Strategy"; }
+    .marketing-table.channels td:nth-of-type(3):before { content: "Tools/Platforms"; }
+    .marketing-table.channels td:nth-of-type(4):before { content: "Frequency"; }
+
+    .marketing-table.action-plan td:nth-of-type(1):before { content: "Week"; }
+    .marketing-table.action-plan td:nth-of-type(2):before { content: "Tasks"; }
+    .marketing-table.action-plan td:nth-of-type(3):before { content: "Responsible"; }
+
+    .marketing-table.budget td:nth-of-type(1):before { content: "Category"; }
+    .marketing-table.budget td:nth-of-type(2):before { content: "PH Budget"; }
+    .marketing-table.budget td:nth-of-type(3):before { content: "Intl Budget"; }
+    .marketing-table.budget td:nth-of-type(4):before { content: "Percentage"; }
+
+    .assistant-guide {
+        padding: 0.75rem;
+    }
+
+    .assistant-guide h3 {
+        font-size: 1.2rem;
+    }
+
+    .assistant-guide h4 {
+        font-size: 1rem;
+    }
+
+    .assistant-guide .highlight, .assistant-guide .task {
+        padding: 0.5rem;
+    }
+}
