@@ -8,7 +8,7 @@
     <meta name="keywords" content="business website, digital presence, online credibility, customer experience, e-commerce, BizlyHub, Joseph Peralta">
     <meta property="og:title" content="10 Signs Your Business Needs a Website (Even If You're on Facebook)">
     <meta property="og:description" content="Learn why a business website is essential for credibility and growth beyond social media platforms like Facebook.">
-    <meta property="og:image" content="../images/business-website-medium.webp">
+    <meta property="og:image" content="http://bizlyhub.com/images/blog-thumbnail.webp">
     <meta property="og:url" content="https://bizlyhub.com/blogs/10-signs-your-business-needs-a-website.php">
     <meta property="og:type" content="website">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
