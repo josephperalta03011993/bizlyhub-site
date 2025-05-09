@@ -346,27 +346,27 @@
                 <h3>Expense Overview</h3>
                 <div class="analytics-container">
                     <div class="analytics-card">
-                        <div class="analytics-title">Today's Expenses</div>
+                        <div class="analytics-title">Today</div>
                         <div class="analytics-value">₱<?php echo number_format($total_today, 2); ?></div>
                     </div>
                     <div class="analytics-card">
-                        <div class="analytics-title">This Week's Expenses</div>
+                        <div class="analytics-title">This Week</div>
                         <div class="analytics-value">₱<?php echo number_format($total_week, 2); ?></div>
                     </div>
                     <div class="analytics-card">
-                        <div class="analytics-title">This Month's Expenses</div>
+                        <div class="analytics-title">This Month</div>
                         <div class="analytics-value">₱<?php echo number_format($total_month, 2); ?></div>
                     </div>
                     <div class="analytics-card">
-                        <div class="analytics-title">This Quarter's Expenses</div>
+                        <div class="analytics-title">This Quarter</div>
                         <div class="analytics-value">₱<?php echo number_format($total_quarter, 2); ?></div>
                     </div>
                     <div class="analytics-card">
-                        <div class="analytics-title">This Year's Expenses</div>
+                        <div class="analytics-title">This Year</div>
                         <div class="analytics-value">₱<?php echo number_format($total_year, 2); ?></div>
                     </div>
                     <div class="analytics-card">
-                        <div class="analytics-title">Projected Next Month</div>
+                        <div class="analytics-title">Projected</div>
                         <div class="analytics-value">₱<?php echo number_format($projected_expenses, 2); ?></div>
                     </div>
                 </div>
