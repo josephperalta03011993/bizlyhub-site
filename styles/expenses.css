@@ -57,7 +57,7 @@ main {
 .main-nav {
     background-color: var(--light-bg);
     border-bottom: 1px solid #e9ecef;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -640,7 +640,7 @@ textarea.form-control {
 
     .nav-link {
         display: block;
-        width: 100%;
+        width: 90%;
     }
 
     .form-row {
@@ -768,6 +768,23 @@ textarea.form-control {
         max-width: 94%;
         margin: 0;
         width: 100%;
+    }
+
+    .dashboard-header {
+        padding: 1rem;
+    }
+
+    .dashboard-header .logo {
+        font-size: 1.25rem;
+    }
+
+    .dashboard-header .user-info {
+        gap: 0.5rem;
+    }
+
+    .dashboard-header .logout-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
     }
 
     .dashboard-header .welcome-info {

@@ -256,6 +256,75 @@ h2 {
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
+    .dashboard-header {
+        padding: 1rem;
+    }
+
+    .dashboard-header .logo {
+        font-size: 1.25rem;
+    }
+
+    .dashboard-header .user-info {
+        gap: 0.5rem;
+    }
+
+    .dashboard-header .logout-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .main-nav {
+        padding: 0.5rem 1rem;
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--light-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem;
+        border-top: 1px solid #e9ecef;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-container.show {
+        display: flex;
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        width: 90%;
+        box-sizing: border-box;
+    }
+
+    /* .nav-link {
+        display: block;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border-radius: 4px;
+    } */
+
+    .nav-link:hover,
+    .nav-link.active,
+    .nav-link:focus {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
     .dashboard-content {
         padding: 0.75rem;
         max-width: 100%;

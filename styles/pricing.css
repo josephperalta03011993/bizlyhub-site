@@ -66,7 +66,7 @@ body {
 .main-nav {
     background-color: var(--light-bg);
     border-bottom: 1px solid #e9ecef;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -325,5 +325,22 @@ h2 {
 
     .pricing-table td:last-child {
         border-bottom: none;
+    }
+
+    .dashboard-header {
+        padding: 1rem;
+    }
+
+    .dashboard-header .logo {
+        font-size: 1.25rem;
+    }
+
+    .dashboard-header .user-info {
+        gap: 0.5rem;
+    }
+
+    .dashboard-header .logout-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
     }
 }
