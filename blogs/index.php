@@ -17,6 +17,18 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        a h4 {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -72,12 +84,20 @@
                     <p>Explore the top 10 must-have website features to improve user experience, performance, and overall success.</p>
                 </div>
             </a>
-        <!-- Blog Card 5 -->
+            <!-- Blog Card 5 -->
             <a href="10-signs-your-business-needs-a-website.php" class="blog-card">
                 <img src="../images/brand-medium.webp" alt="10 Signs Your Business Needs a Website" loading="lazy" height="200" width="400">
                 <div>
                     <h4>10 Signs Your Business Needs a Website (Even If You're on Facebook)</h4>
                     <p>Explore the top 10 signs your business needs a website, even if you're already on Facebook, to boost growth and control.</p>
+                </div>
+            </a>
+            <!-- Blog Card 6 -->
+            <a href="ai-trends-transforming-business.php" class="blog-card">
+                <img src="../images/thumbnail.webp" alt="Practical AI Trends Transforming Your Business in 2025" loading="lazy" height="200" width="400">
+                <div>
+                    <h4>Practical AI Trends Transforming Your Business in 2025</h4>
+                    <p>The world of business is undergoing a significant transformation, driven by the rapid evolution of AI trends.</p>
                 </div>
             </a>
     </section>
