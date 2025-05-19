@@ -29,6 +29,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <li class="nav-item">
             <a href="subscribers.php" class="nav-link <?php echo ($current_page == 'subscribers.php') ? 'active' : ''; ?>">Subscribers</a>
         </li>
+        <li class="nav-item">
+            <a href="bills.php" class="nav-link <?php echo ($current_page == 'bills.php') ? 'active' : ''; ?>">Bills</a>
+        </li>
     </ul>
 </nav>
 
