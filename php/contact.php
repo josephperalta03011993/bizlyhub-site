@@ -7,6 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $message = filter_var($_POST['message'] ?? '', FILTER_SANITIZE_STRING);
 
+    // Check the contact form honeypot
+    if (!empty($_POST["contact_website"])) {
+        // Likely a bot
+        http_response_code(200);
+        echo json_encode(["success" => true, "message" => "Thank you for your inquiry!"]);
+        exit;
+    }
+    
     if (!empty($name) && !empty($email) && !empty($message) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $subject = 'New Contact Inquiry';
         $body = "Subject: New Contact Form Submission

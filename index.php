@@ -262,6 +262,12 @@
                     <textarea id="message" name="message" placeholder=" " rows="5" required aria-required="true"></textarea>
                     <label for="message">Tell us about your project</label>
                 </div>
+
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <label for="contact_website">Leave this blank:</label>
+                    <input type="text" id="contact_website" name="contact_website" tabindex="-1" autocomplete="off">
+                </div>
+
                 <button type="submit" class="submit-button">Send Inquiry</button>
             </form>
         </div>
