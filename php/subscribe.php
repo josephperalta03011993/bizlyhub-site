@@ -29,6 +29,14 @@ if ($conn->connect_error) {
 
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check the honeypot field
+    if (!empty($_POST["website"])) {
+        // If the honeypot field is filled, it's likely a bot
+        http_response_code(200); // Respond with success to avoid tipping off the bot
+        echo json_encode(["success" => true, "message" => "Thank you for subscribing!"]);
+        exit; // Stop processing the rest of the form
+    }
+    
     // Validate email
     $email = filter_var($_POST["email"] ?? '', FILTER_VALIDATE_EMAIL);
 

@@ -235,6 +235,13 @@
         <p>Sign up for our newsletter and be the first to know about new products, special offers, and exclusive content.</p>
         <form class="subscribe-form" id="subscribeForm" action="php/subscribe.php" method="POST">
             <input type="email" name="email" placeholder="Your Email" required aria-label="Email for subscription">
+
+            <!-- Honeypot -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <label for="website">Leave this field blank:</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
             <button type="submit">Subscribe</button>
         </form>
     </section>
