@@ -11,8 +11,16 @@
         <link rel="icon" type="image/png" href="favicon.ico">
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
         <script src="https://www.google.com/recaptcha/api.js?render=6LeHxUArAAAAAJQ6MC6Uw-AHdlXi7iqKPcPXX0DM"></script>
+        <link rel="canonical" href="https://bizlyhub.com" />
+        <meta property="og:title" content="BizlyHub - Web Design & Development Solutions" />
+        <meta property="og:description" content="BizlyHub: Elevate your online presence with expert web design and development. Custom, high-performance websites tailored to your business." />
+        <meta property="og:url" content="https://bizlyhub.com" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
     </head>
     <body>
         <nav class="navbar" aria-label="Main navigation">
@@ -24,7 +32,7 @@
                     <a href="#features" role="menuitem">Services</a>
                     <a href="#about" role="menuitem">About</a>
                     <a href="#portfolio" role="menuitem">Portfolio</a>
-                    <a href="blogs">Blogs</a>
+                    <a href="blogs/index.php" role="menuitem">Blogs</a>
                     <a href="#pricing" role="menuitem">Pricing</a>
                     <a href="#contact" role="menuitem">Contact</a>
                 </div>
@@ -72,16 +80,16 @@
             <div class="portfolio-grid">
                 <div class="portfolio-card">
                     <a href="#contact">
-                        <img src="images/custome-web-app.webp" alt="E-Commerce Store Project" Loading="lazy" width="400" height="200">
+                        <img src="images/custome-web-app.webp" alt="Screenshot of custom web application dashboard showing analytics interface" loading="lazy" width="400" height="200">
                         <div>
-                            <h4>Custome Web Application</h4>
+                            <h4>Custom Web Application</h4>
                             <p>Unlock the full potential of your business with a Custom Web Application tailored to your unique needs.</p>
                         </div>
                     </a>
                 </div>
                 <div class="portfolio-card">
                     <a href="https://portfolio.bizlyhub.com/petshop/" target="_blank">
-                        <img src="images/pawsome-hero-banner.webp" alt="Portfolio Site Project Pawsome" loading="lazy" width="400" height="200">
+                        <img src="images/pawsome-hero-banner.webp" alt="Screenshot of Pawsome pet care website homepage" loading="lazy" width="400" height="200">
                         <div>
                             <h4>Pawsome</h4>
                             <p>Your trusted partner in pet care—quality products, expert advice, and compassionate services for your furry friends.</p>
@@ -90,7 +98,7 @@
                 </div>
                 <div class="portfolio-card">
                     <a href="https://portfolio.bizlyhub.com/va/" target="_blank">
-                        <img src="images/eliteva-hero-banner.webp" alt="Business Landing Page Project" loading="lazy" width="400" height="200">
+                        <img src="images/eliteva-hero-banner.webp" alt="Screenshot of business landing page for lead generation" loading="lazy" width="400" height="200">
                         <div>
                             <h4>Business Landing Page</h4>
                             <p>A high-converting page for lead generation.</p>
@@ -173,7 +181,7 @@
                         <div>
                             <h4>Websites Best Design Practices</h4>
                             <p>Crafting captivating websites requires a deep <br>
-                                understanding of **effective design practices.**</p>
+                                understanding of effective design practices.</p>
                         </div>
                     </a>
                 </div>
@@ -188,7 +196,7 @@
                 </div>
                 <div class="blog-card">
                     <a href="blogs/how-a-well-designed-website-can-boost-your-sales-in-2025.php" target="_blank" rel="noopener noreferrer">
-                        <img src="images/seo-basics.webp" alt="Blog post about SEO basics" loading="lazy">
+                        <img src="images/seo-basics.webp" alt="Blog post about boosting sales with website design" loading="lazy" width="300" height="200">
                         <div>
                             <h4>Boost Your Sales in 2025</h4>
                             <p>How a Well-Designed Website Can Boost Your Sales in 2025.</p>
@@ -201,33 +209,30 @@
         <section id="faq" class="faq animate-in">
             <h2 class="section-title">Frequently Asked Questions</h2>
             <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question" tabindex="0">
+                <details class="faq-item">
+                    <summary class="faq-question">
                         <h4>How long does it take to build a website?</h4>
-                        <span>↓</span>
-                    </div>
+                    </summary>
                     <div class="faq-answer">
                         <p>Timelines vary by project size. A Basic package takes 2-3 weeks, Professional 4-6 weeks, and Enterprise 8-12 weeks.</p>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" tabindex="0">
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
                         <h4>Do you offer ongoing maintenance?</h4>
-                        <span>↓</span>
-                    </div>
+                    </summary>
                     <div class="faq-answer">
                         <p>Yes, we offer optional maintenance plans starting at $49/month for updates and support.</p>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" tabindex="0">
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">
                         <h4>Can I update the site myself?</h4>
-                        <span>↓</span>
-                    </div>
+                    </summary>
                     <div class="faq-answer">
                         <p>Absolutely! We provide a user-friendly CMS with all packages for easy content updates.</p>
                     </div>
-                </div>
+                </details>
             </div>
         </section>
 
@@ -296,18 +301,24 @@
                     <h4>Connect With Us</h4>
                     <div class="social-links">
                         <a href="https://x.com/BizlyHub" target="_blank" aria-label="Twitter">
-                            <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.5 3H21L13.5 10.92L22 21H15.5L10.26 14.48L4.97 21H1L9.02 12.39L1 3H7.7L12.47 9.07L17.5 3ZM16.39 19H17.87L6.62 5H5.02L16.39 19Z"/>
                             </svg>
                         </a>
                         <a href="https://www.facebook.com/profile.php?id=61567562983142" target="_blank" aria-label="Facebook">
-                            <img src="images/fb-icon.png" alt="faceboook" width="30" height="30">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                            </svg>
                         </a>
                         <a href="https://www.linkedin.com/in/jdperalta/" target="_blank" aria-label="LinkedIn">
-                            <img src="images/linkedin-icon.png" alt="linkedin" width="30" height="30">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8.5 17H6.5V9h2v8zM7.5 7.5a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 9.5h-2v-4c0-1-.9-1.8-2-1.8s-2 .8-2 1.8v4h-2V9h2v1c.6-.8 1.6-1.2 2.5-1.2 1.7 0 3 1.3 3 3v5z"/>
+                            </svg>
                         </a>
                         <a href="https://www.instagram.com/bizlyhub?igsh=aWptN3RucnBmd3Vp&fbclid=IwY2xjawJTCbtleHRuA2FlbQIxMAABHRO6uY5uIwsgszh77ufQduzuZUWuIdGZ9K-JUN8XwbtSjhm9VI6R2X607g_aem_kUZ19BGEEuuTh06xyFP7Wg" target="_blank" aria-label="Instagram">
-                            <img src="images/instagram-icon.png" alt="instagram" width="30" height="30">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.5.2.9.5 1.3.9.4.4.7.8.9 1.3.2.4.3 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.5-.5.9-.9 1.3-.4.4-.8.7-1.3.9-.4.2-1 .3-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.5-.2-.9-.5-1.3-.9-.4-.4-.7-.8-.9-1.3-.2-.4-.3-1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.5.5-.9.9-1.3.4-.4.8-.7 1.3-.9.4-.2 1-.3 2.2-.4 1.2-.1 1.6-.1 4.8-.1zm0-2.2C8.7 0 8.2 0 7 .1c-1.4.1-2.3.3-3.1.7-.8.4-1.5.9-2.1 1.5-.6.6-1.1 1.3-1.5 2.1-.4.8-.6 1.7-.7 3.1C0 8.2 0 8.7 0 12s0 3.8.1 5.1c.1 1.4.3 2.3.7 3.1.4.8.9 1.5 1.5 2.1.6.6 1.3 1.1 2.1 1.5.8.4 1.7.6 3.1.7 1.3.1 1.8.1 5.1.1s3.8 0 5.1-.1c1.4-.1 2.3-.3 3.1-.7.8-.4 1.5-.9 2.1-1.5.6-.6 1.1-1.3 1.5-2.1.4-.8.6-1.7.7-3.1.1-1.3.1-1.8.1-5.1s0-3.8-.1-5.1c-.1-1.4-.3-2.3-.7-3.1-.4-.8-.9-1.5-1.5-2.1-.6-.6-1.3-1.1-2.1-1.5-.8-.4-1.7-.6-3.1-.7C15.8 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-10.6c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/>
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -325,7 +336,7 @@
 
         <div id="privacyModal" class="modal">
             <div class="modal-content">
-                <span class="modal-close">&times;</span>
+                <span class="modal-close">×</span>
                 <h1>Privacy Policy</h1>
                 <p>Last Updated: March 26, 2025</p>
                 <h2>1. Introduction</h2>
@@ -357,7 +368,7 @@
 
         <div id="termsModal" class="modal">
             <div class="modal-content">
-                <span class="modal-close">&times;</span>
+                <span class="modal-close">×</span>
                 <h1>Terms of Service</h1>
                 <p>Last Updated: March 26, 2025</p>
                 <h2>1. Acceptance of Terms</h2>
@@ -376,62 +387,109 @@
         </div>
 
         <script>
-            // Your reCAPTCHA Site Key is correct here
             const RECAPTCHA_SITE_KEY = '6LeHxUArAAAAAJQ6MC6Uw-AHdlXi7iqKPcPXX0DM'; 
 
             document.getElementById('contactForm').addEventListener('submit', function(event) {
-                event.preventDefault(); // Stop the default form submission!
-
-                const form = this; // 'this' refers to the form element
+                event.preventDefault();
+                const form = this;
                 const submitButton = form.querySelector('button[type="submit"]');
-
-                // Disable button to prevent multiple submissions
                 submitButton.disabled = true;
                 submitButton.textContent = 'Sending...';
 
                 grecaptcha.ready(function() {
                     grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact_form' }).then(function(token) {
                         document.getElementById('recaptchaToken').value = token;
-
-                        // Now, send the form data via AJAX using Fetch API
-                        const formData = new FormData(form); // Gets all form fields including the hidden reCAPTCHA token
+                        const formData = new FormData(form);
 
                         fetch(form.action, {
                             method: 'POST',
                             body: formData,
                             headers: {
-                                'Accept': 'application/json' // Tell the server we expect JSON
+                                'Accept': 'application/json'
                             }
                         })
                         .then(response => {
-                            // Check if the response is OK (2xx status code)
                             if (!response.ok) {
-                                // If not OK, parse JSON and throw an error to be caught by .catch()
                                 return response.json().then(errorData => {
-                                    // Use the message from the server, or a generic one
                                     throw new Error(errorData.message || 'Server responded with an error.');
                                 });
                             }
-                            // If OK, parse the JSON response
                             return response.json();
                         })
                         .then(data => {
-                            // Handle success response (from PHP's perspective)
-                            alert(data.message); // Display message from PHP
-                            if (data.success) {
-                                form.reset(); // Clear the form only on actual success
-                            }
+                            const messageDiv = document.createElement('div');
+                            messageDiv.className = data.success ? 'success-message' : 'error-message';
+                            messageDiv.textContent = data.message;
+                            form.prepend(messageDiv);
+                            if (data.success) form.reset();
+                            setTimeout(() => messageDiv.remove(), 5000);
                         })
                         .catch(error => {
-                            // Handle any errors during the fetch or from the server response (network issues, JSON parsing errors)
-                            console.error('Form submission error:', error);
-                            alert('Form submission failed: ' + error.message); // Display error message
+                            const messageDiv = document.createElement('div');
+                            messageDiv.className = 'error-message';
+                            messageDiv.textContent = 'Form submission failed: ' + error.message;
+                            form.prepend(messageDiv);
+                            setTimeout(() => messageDiv.remove(), 5000);
                         })
                         .finally(() => {
-                            // Re-enable button regardless of success or failure
                             submitButton.disabled = false;
                             submitButton.textContent = 'Send Inquiry';
                         });
+                    });
+                });
+            });
+
+            document.querySelector('.menu-toggle').addEventListener('click', function() {
+                const navLinks = document.querySelector('.nav-links');
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('open');
+            });
+
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'block';
+                trapFocus(modal);
+            }
+
+            function trapFocus(modal) {
+                const focusableElements = modal.querySelectorAll('a[href], button, textarea, input, select');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                modal.addEventListener('keydown', function(e) {
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey && document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        } else if (!e.shiftKey && document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                });
+            }
+
+            document.querySelectorAll('.modal-close').forEach(function(closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            });
+
+            const indicators = document.querySelectorAll('.indicator');
+            const cards = document.querySelectorAll('.testimonial-card');
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', () => {
+                    indicators.forEach(i => i.classList.remove('active'));
+                    indicator.classList.add('active');
+                    cards.forEach((card, index) => {
+                        card.style.display = indicator.dataset.index == index ? 'block' : 'none';
                     });
                 });
             });
