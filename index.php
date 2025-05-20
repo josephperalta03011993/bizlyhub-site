@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,7 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <link rel="stylesheet" href="styles/main.css">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeHxUArAAAAAJQ6MC6Uw-AHdlXi7iqKPcPXX0DM"></script>
 </head>
 <body>
     <nav class="navbar" aria-label="Main navigation">
@@ -268,6 +269,8 @@
                     <input type="text" id="contact_website" name="contact_website" tabindex="-1" autocomplete="off">
                 </div>
 
+                <input type="hidden" name="recaptcha_token" id="recaptchaToken">
+
                 <button type="submit" class="submit-button">Send Inquiry</button>
             </form>
         </div>
@@ -374,6 +377,24 @@
         </div>
     </div>
 
+    <script>
+        // Replace YOUR_RECAPTCHA_SITE_KEY with the actual Site Key you got from Google
+        const RECAPTCHA_SITE_KEY = '6LeHxUArAAAAAJQ6MC6Uw-AHdlXi7iqKPcPXX0DM'; 
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Execute reCAPTCHA
+            grecaptcha.ready(function() {
+                grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact_form' }).then(function(token) {
+                    // Add the reCAPTCHA token to your hidden input field
+                    document.getElementById('recaptchaToken').value = token;
+                    // Now, submit the form programmatically
+                    document.getElementById('contactForm').submit();
+                });
+            });
+        });
+    </script>
     <script src="js/main.js" defer></script>
 </body>
 </html>
