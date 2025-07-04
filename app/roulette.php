@@ -327,7 +327,8 @@
             { name: "Piniritong Manok", description: "Classic Filipino-style fried chicken that's crispy on the outside, juicy inside. Always a hit!" },
             { name: "Ginataang Sitaw at Kalabasa", description: "String beans and squash simmered in rich coconut milk with shrimp or pork. Creamy and comforting!" },
             { name: "Ginisang Togue", description: "Sautéed mung bean sprouts with carrots, tofu, and sometimes pork or shrimp. Light and healthy!" },
-            { name: "Tokwa", description: "Crispy fried tofu cubes often served with vinegar dipping sauce or added to stir-fries. Simple and delicious!" }
+            { name: "Tokwa", description: "Crispy fried tofu cubes often served with vinegar dipping sauce or added to stir-fries. Simple and delicious!" },
+            { name: "Daing na Bangus", description: "Milkfish marinated in vinegar, garlic, and pepper, then fried until golden and crispy. A breakfast favorite with garlic rice!" }
         ];
         
         const colors = [
@@ -336,7 +337,7 @@
             '#f8c471', '#82e0aa', '#ff9ff3', '#54a0ff', '#5f27cd',
             '#00d2d3', '#ff9f43', '#feca57', '#ff6348', '#ff3838',
             '#7bed9f', '#70a1ff', '#5352ed', '#2ed573', '#1e90ff',
-            '#ff4757'
+            '#ff4757', '#ff6b6b'
         ];
         
         let currentRotation = 0;
