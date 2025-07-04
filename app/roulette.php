@@ -70,48 +70,34 @@
         
         .wheel-section {
             position: absolute;
-            width: 50%;
-            height: 50%;
-            transform-origin: right bottom;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.6em;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            text-align: center;
-            line-height: 1.2;
-            overflow: hidden;
-        }
-        
-        .wheel-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: inherit;
-            transform-origin: right bottom;
-            clip-path: polygon(0 0, 100% 0, 0 100%);
-            z-index: -1;
+            transform-origin: center;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8em; /* Adjust font size for better fit */
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
-        
+
+        .wheel-section::before {
+            content: none; /* Remove clip-path pseudo-element */
+        }
+
         .wheel-section span {
             position: relative;
-            z-index: 1;
-            transform: rotate(-45deg) translateY(-20px);
-            transform-origin: center;
+            transform: rotate(-45deg) translateY(20px); /* Adjust text positioning */
+            max-width: 80px; /* Reduce max-width for smaller sections */
             white-space: nowrap;
-            overflow: visible;
+            overflow: hidden;
+            text-overflow: ellipsis;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            max-width: 100px;
-            line-height: 1;
         }
-        
         .pointer {
             position: absolute;
             top: -10px;
@@ -361,21 +347,22 @@
         // Initialize the wheel
         function initWheel() {
             const wheel = document.getElementById('wheel');
+            wheel.innerHTML = ''; // Clear existing content
+
             const sectionAngle = 360 / foods.length;
-            
-            wheel.innerHTML = '';
-            
+
             foods.forEach((food, index) => {
                 const section = document.createElement('div');
                 section.className = 'wheel-section';
-                section.style.backgroundColor = colors[index];
+                // Set rotation for each section
                 section.style.transform = `rotate(${index * sectionAngle}deg)`;
+                section.style.background = `conic-gradient(from ${index * sectionAngle}deg, ${colors[index]} ${sectionAngle}deg, transparent ${sectionAngle}deg)`;
                 section.style.zIndex = foods.length - index;
-                
+
                 const span = document.createElement('span');
-                span.textContent = food.name;
+                span.textContent = food.name; // Use actual food name
                 section.appendChild(span);
-                
+
                 wheel.appendChild(section);
             });
         }
@@ -492,7 +479,7 @@
             navLinks.classList.toggle('active');
             menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
-        
+
     </script>
 </body>
 </html>
