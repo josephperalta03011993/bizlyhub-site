@@ -511,6 +511,40 @@
                     });
                 });
             });
+
+            document.getElementById('subscribeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = this;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.message || 'Subscription failed'); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                const msgDiv = document.createElement('div');
+                msgDiv.textContent = data.message;
+                msgDiv.className = data.success ? 'success-message' : 'error-message';
+                form.prepend(msgDiv);
+                if (data.success) form.reset();
+                setTimeout(() => msgDiv.remove(), 5000);
+            })
+            .catch(error => {
+                const msgDiv = document.createElement('div');
+                msgDiv.textContent = 'Error: ' + error.message;
+                msgDiv.className = 'error-message';
+                form.prepend(msgDiv);
+                setTimeout(() => msgDiv.remove(), 5000);
+            });
+            });
+
         </script>
         <script src="js/main.js" defer></script>
     </body>
