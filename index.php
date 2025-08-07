@@ -105,6 +105,24 @@
                         </div>
                     </a>
                 </div>
+                <div class="portfolio-card">
+                    <a href="https://portfolio.bizlyhub.com/wedding/" target="_blank">
+                        <img src="images/wedding-rsvp-hero.webp" alt="Screenshot of wedding RSVP website" loading="lazy" width="400" height="200">
+                        <div>
+                            <h4>Wedding RSVP</h4>
+                            <p>Elegant wedding site with RSVP, guest list, and email notifications.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-card">
+                    <a href="https://realestate.bizlyhub.com/" target="_blank">
+                        <img src="images/realestate-hero.webp" alt="Screenshot of real estate landing page" loading="lazy" width="400" height="200">
+                        <div>
+                            <h4>Real Estate</h4>
+                            <p>Lead-generating property showcase for real estate professionals.</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
 
